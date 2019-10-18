@@ -7,16 +7,16 @@
     <title>Hello World!</title>
   </head>
   <body>
-    <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge " style="display:block;z-index:2;width:20%;min-width:300px" id="mySidebar">
-      <!-- <a href="javascript:void(0)" onclick="w3_close()"
-          class="w3-bar-item w3-button">Close Menu</a>
-      <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Food</a>
-      <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a> -->
+    <nav  class="w3-xlarge w3-row w3-col m1 3 "id="mySidebar">
+        <ul>
+
+        </ul>
+        
 
     </nav>
 
     <!-- Top menu -->
-    <div class="w3-top">
+    <div class="w3-col m4 12" >
         <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
           <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
           <div class="w3-right w3-padding-16">Mail</div>
@@ -45,6 +45,7 @@
 
     </script>
     <!-- You can also require other files to run in this process -->
+    <script src="./dist/models/listItem.js"></script>
     <script src="./dist/renderer.js"></script>
   </body>
 </html>

@@ -4,15 +4,14 @@
 
 
 window.onload = () => {
-    const items: Array<String> = [
-      "one",
-      "two",
-      "three"
+    const items: Array<listItem> = [
+      new listItem(1, "one", 'this is one')
+   
     ];
     const el = document.getElementById('mySidebar');
     items.forEach(item => {
         var div = document.createElement("div");
-        div.innerText = item.toString();
+        div.innerText = item.title;
         el.appendChild(div);
     });
 };
