@@ -1,17 +1,41 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
+let items: listItemService;
+let detailView: detailViewService;
 
+function itemHasBeenSelected(e: Event) {
+  var title = (<HTMLInputElement>e.target).textContent;
+  var item = items.getItem(title);
+  detailView.showItem(item);
+
+}
+
+
+
+function populateSidebar() {
+  var list = items.getList();
+  const el = document.getElementById("mySidebar");
+  el.innerHTML="";
+  list.forEach(item => {
+    var div = document.createElement("li");
+    div.innerText = item.title;
+    div.addEventListener("click", (e: Event) => itemHasBeenSelected(e));
+    el.appendChild(div);
+  });
+}
+function addListItem(e: Event) {
+  var item = new listItem(0, "", "");
+
+  detailView.editItem(item);
+
+  //when user presses submit save values
+}
 
 window.onload = () => {
-    const items: Array<listItem> = [
-      new listItem(1, "one", 'this is one')
-   
-    ];
-    const el = document.getElementById('mySidebar');
-    items.forEach(item => {
-        var div = document.createElement("div");
-        div.innerText = item.title;
-        el.appendChild(div);
-    });
+  items = new listItemService();
+  detailView = new detailViewService();
+  populateSidebar();
 };
+
+
