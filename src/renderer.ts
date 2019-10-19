@@ -20,6 +20,7 @@ function populateSidebar() {
   list.forEach(item => {
     var div = document.createElement("li");
     div.innerText = item.title;
+    div.classList.add("list-group-item")
     div.addEventListener("click", (e: Event) => itemHasBeenSelected(e));
     el.appendChild(div);
   });

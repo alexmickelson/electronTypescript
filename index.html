@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Hello World!</title>
     <script src="./dist/models/listItem.js"></script>
     <script src="./dist/services/listItemService.js"></script>
@@ -11,22 +10,27 @@
     <script src="./dist/renderer.js"></script>
 
   </head>
-  <body>
-    <nav  class="w3-xlarge w3-row w3-col m1 3 " >
-        <ul id="mySidebar"></ul>
+  <body class="row" style="height:100%">
+    <nav  class="col-2 text-center" >
+        <ul id="mySidebar" class="list-group"></ul>
         <div id="addBtn" onclick="addListItem()">+add</div>
 
     </nav>
 
     <!-- Top menu -->
-    <div class="w3-center w3-col m4 12" >
-        <h1 >
+    <div class="col-8">
+      <div class="container">
+        <h1 class="text-center">
           List Manager
         </h1>
-        <div id="itemDetailView"></div>
+        <div id="itemDetailView" class="form-group"></div>
     </div>
-
-
+  </div>
+      <div clas="col-2">
+        <p>Adds go here</p>
+  
+      </div>
+    
     <!-- You can also require other files to run in this process -->
 
    

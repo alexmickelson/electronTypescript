@@ -15,4 +15,9 @@ class listItemService{
     add(item: listItem) {
         this.list.push(item);
     }
+
+    deleteItem(title: String){
+     this.list=this.list.filter((i)=>i.title!=title) 
+        
+    }
 }
