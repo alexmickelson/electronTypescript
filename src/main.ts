@@ -9,6 +9,8 @@ function createWindow() {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      nodeIntegration: true, // <--- flag
+      nodeIntegrationInWorker: true // <---  for web workers
     },
     width: 1200,
   });
@@ -17,7 +19,7 @@ function createWindow() {
   mainWindow.loadFile(path.join(__dirname, "../index.html"));
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {
@@ -42,6 +44,15 @@ app.on("window-all-closed", () => {
   }
 });
 
+// app.on('ready', () => {
+//   mainWindow = new BrowserWindow({
+//       webPreferences: {
+//           nodeIntegration: true, // <--- flag
+//           nodeIntegrationInWorker: true // <---  for web workers
+//       }
+//   });
+// });
+
 app.on("activate", () => {
   // On OS X it"s common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
@@ -49,6 +60,7 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.

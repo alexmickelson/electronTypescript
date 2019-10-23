@@ -20,8 +20,44 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
+    "@types/node": "^12.11.5",
     "electron": "^6.0.8",
     "tslint": "^5.19.0",
     "typescript": "^3.6.0"
-  }
+  },
+  "dependencies": {
+    "@types/fs-extra": "^8.0.1",
+    "fs-extra": "^8.1.0"
+  },
+  "compileOnSave": true,
+  "buildOnSave": true,
+  "compilerOptions": {
+    "rootDir": "src",
+    "sourceMap": true,
+    "target": "es6",
+    "declaration": false,
+    "noImplicitAny": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "baseUrl": "./",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "src/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts"
+  ]
 }

@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Hello World!</title>
-    <script src="./dist/models/listItem.js"></script>
-    <script src="./dist/services/listItemService.js"></script>
+    <script src="./dist/models/fileInfo.js"></script>
+    <script src="./dist/services/fileInfoService.js"></script>
     <script src="./dist/services/detailViewService.js"></script>
+    <script src="./dist/services/sidebarService.js"></script>
     <script src="./dist/renderer.js"></script>
 
   </head>
   <body class="row" style="height:100%">
     <nav  class="col-2 text-center" >
         <ul id="mySidebar" class="list-group"></ul>
+        <div id="addBtn" onclick="selectFolder()">Select Folder</div>
         <div id="addBtn" onclick="addListItem()">+add</div>
 
     </nav>
