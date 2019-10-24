@@ -1,4 +1,3 @@
-
 class sidebarService {
     fileCollection: fileInfoService;
 

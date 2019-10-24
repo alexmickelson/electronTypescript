@@ -1,6 +1,13 @@
+
+
+
 class fileInfoService{
     list : Array<fileInfo>;
-    constructor(){
+    directoryPath : string;
+    fs: typeof import("fs");
+
+    constructor(fs: typeof import("fs")){
+        this.fs = fs;
         this.list = [
             new fileInfo('this/is/one.exe', "one.exe")
         ];
@@ -22,6 +29,12 @@ class fileInfoService{
     }
 
     loadDirectory(path: string){
-        
-    }
+        this.directoryPath= path;
+        var files = this.fs.readdirSync(this.directoryPath);
+        this.list= new Array<fileInfo>();
+        files.forEach(file=>{
+            var info = new fileInfo(this.directoryPath+file, file);
+            this.list.push(info);
+        })
+     }
 }
