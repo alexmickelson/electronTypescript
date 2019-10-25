@@ -15,9 +15,13 @@ class fileInfoService{
     getList():Array<fileInfo>{
         return this.list;
     }
-    getItem(fullPath:String): fileInfo{
-        let item=this.list.find((i)=>i.fullPath==fullPath)
-        return item;
+    getFileContents(title: string): fileInfo{
+        var file: fileInfo = this.list.filter(t=> t.displayName == title)[0]
+        if(file.contents == null){
+            var buffer = this.fs.readFileSync(file.fullPath)
+            file.contents = buffer.toString()
+        }
+        return file;
     }
     add(item: fileInfo) {
         this.list.push(item);
@@ -36,5 +40,6 @@ class fileInfoService{
             var info = new fileInfo(this.directoryPath+file, file);
             this.list.push(info);
         })
+        
      }
 }

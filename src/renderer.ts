@@ -14,13 +14,19 @@ let sidebar: sidebarService;
 
 function itemHasBeenSelected(e: Event) {
   var title = (<HTMLInputElement>e.target).textContent;
-  var item = fileCollection.getItem(title);
+  var item = fileCollection.getFileContents(title);
   detailView.showItem(item);
 
 }
 
 function selectFolder(){
-  dialog.showOpenDialog(new Electron.BrowserWindow(),{})
+  let fileName: string = ""
+  dialog.showOpenDialog(null,{
+    properties:['openDirectory']
+  }).then(result => {
+    fileCollection.loadDirectory(result.filePaths[0]+"/");
+    sidebar.populateSidebar();
+  });
 }
 
 function addfileInfo(e: Event) {

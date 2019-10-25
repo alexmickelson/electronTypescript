@@ -5,9 +5,14 @@ class detailViewService {
         this.fileCollection = fileCollection;
     }
     showItem(item: fileInfo) {
-        // var itemView = document.getElementById("itemDetailView");
+        var itemView = document.getElementById("itemDetailView");
 
-        // var divTitle = document.createElement("div");
+        var divTitle = document.createElement("div");
+        divTitle.innerText = item.displayName;
+
+        var divFileContents = document.createElement("div");
+        divFileContents.innerText = item.contents;
+        divFileContents.setAttribute("contenteditable","true")
 
         // divTitle.classList.add("form-control");
         // divTitle.innerText = item.title;
@@ -23,9 +28,9 @@ class detailViewService {
         //     this.editItem(item);
         // })
 
-        // itemView.innerHTML = "";
-        // itemView.appendChild(divTitle);
-        // itemView.appendChild(divDescription);
+        itemView.innerHTML = "";
+        itemView.appendChild(divTitle);
+        itemView.appendChild(divFileContents);
         // itemView.appendChild(editButton);
         
 

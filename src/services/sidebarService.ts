@@ -14,7 +14,9 @@ class sidebarService {
             var div = document.createElement("li");
             div.innerText = file.displayName;
             div.classList.add("list-group-item")
-            div.addEventListener("click", (e: Event) => {});//itemhasbeenselected
+            div.addEventListener("click", (e: Event) => {
+                itemHasBeenSelected(e)
+            });
             el.appendChild(div);
         });
     }
