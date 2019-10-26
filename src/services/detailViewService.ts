@@ -1,37 +1,72 @@
 class detailViewService {
     fileCollection: fileInfoService;
+    rerender: ()=>void;
 
-    constructor(fileCollection: fileInfoService){
+    constructor(fileCollection: fileInfoService, rerender: ()=>void){
         this.fileCollection = fileCollection;
+        this.rerender=rerender;
     }
     showItem(item: fileInfo) {
+        var divTitleBtn= document.createElement("div");
         var itemView = document.getElementById("itemDetailView");
 
-        var divTitle = document.createElement("div");
+        divTitleBtn.style.padding="1em";
+
+
+        var divTitle = document.createElement("h3");
         divTitle.innerText = item.displayName;
+        divTitle.style.display="inline-block";
+        divTitle.setAttribute("contenteditable","true");
+        divTitle.classList.add("border");
+        divTitle.classList.add("border-dark");
+        divTitle.style.padding=".5em";
+        divTitle.style.width="70%";
+        divTitle.classList.add("rounded");
+        divTitle.addEventListener("input",()=>{fileEdited()});
+        
+        
 
         var divFileContents = document.createElement("div");
         divFileContents.innerText = item.contents;
         divFileContents.setAttribute("contenteditable","true")
+        divFileContents.classList.add("border");
+        divFileContents.classList.add("border-dark");
+        divFileContents.style.padding="1em";
+        divFileContents.classList.add("rounded");
+        divFileContents.style.margin=".5em";
+        divFileContents.addEventListener("input",()=>{fileEdited()});
 
-        // divTitle.classList.add("form-control");
-        // divTitle.innerText = item.title;
-        // var divDescription = document.createElement("div");
-        // divDescription.classList.add("form-control");
-        // divDescription.innerText = item.message;
 
-        // var editButton =document.createElement("button");
-        // editButton.innerText="Edit"
-        // editButton.classList.add("btn");
-        // editButton.classList.add("btn-primary");
-        // editButton.addEventListener("click",()=>{
-        //     this.editItem(item);
-        // })
+        var saveBtn = document.createElement("button");
+        saveBtn.classList.add("btn");
+        saveBtn.classList.add("btn-primary");
+        saveBtn.setAttribute("float","right");
+        saveBtn.innerText="Save File";
+        saveBtn.style.cssFloat="right";
+        saveBtn.style.display="inline";
+
+       saveBtn.addEventListener("click",()=>{
+        item.contents=divFileContents.innerText;
+        item.displayName=divTitle.innerText;
+        this.fileCollection.addOrUpdate(item);
+        this.fileCollection.reloadDirectory();
+        this.rerender();
+        dirtyFile=false;
+        alert("File Saved Succefully");
+
+       })
+
+        
+
+       
 
         itemView.innerHTML = "";
-        itemView.appendChild(divTitle);
+        divTitleBtn.appendChild(divTitle);
+        divTitleBtn.appendChild(saveBtn);
+        itemView.appendChild(divTitleBtn);
         itemView.appendChild(divFileContents);
-        // itemView.appendChild(editButton);
+
+       
         
 
     }

@@ -1,11 +1,15 @@
 
 
 class fileInfo{
-    fullPath: string;
+    parentDirectory: string;
     displayName: string;
     contents: string;
     constructor(fullPath: string, displayName: string){
-        this.fullPath = fullPath;
+        this.parentDirectory = fullPath;
         this.displayName = displayName;
+    }
+    
+    fullPath(){
+        return this.parentDirectory+this.displayName;
     }
 }
